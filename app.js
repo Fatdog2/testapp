@@ -25,6 +25,7 @@ mongodb.connect(url, function(err, client) {
 
 //inserting documents for mongo
 
+
 const insertDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
@@ -36,7 +37,7 @@ const insertDocuments = function(db, callback) {
     callback(result);
   });
 }
-
+//yep no worries mate
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
