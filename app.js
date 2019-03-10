@@ -26,6 +26,8 @@ mongodb.connect(url, function(err, client) {
 //inserting documents for mongo
 
 
+//a change was made
+
 const insertDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
