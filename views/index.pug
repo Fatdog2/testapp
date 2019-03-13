@@ -4,5 +4,8 @@ block content
   h1 #{title}
   p Welcome to #{title}
   p We also love #{chicken}
-  button(onClick ='buttonPress()')
-  
+  //- button(onClick ='buttonPress()')
+  form(action="/test1/sam/17", method="post")
+    input(type="text", name="username" placeholder="Username")
+    input(type="text", name="password" placeholder="Password")
+    input(type="submit", value="Submit")

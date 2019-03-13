@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 const mongodb = require('mongodb').MongoClient;
@@ -27,9 +28,6 @@ mongodb.connect(url, function(err, client) {
 
 //inserting documents for mongo
 
-
-//a change was made
-
 const insertDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('documents');
@@ -41,7 +39,6 @@ const insertDocuments = function(db, callback) {
     callback(result);
   });
 }
-//yep no worries mate
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -56,10 +53,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/test1/:name/:age', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -78,3 +77,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+function login(req, res) {
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
+  res.send('<h1>Thanks</h1>');
+}
